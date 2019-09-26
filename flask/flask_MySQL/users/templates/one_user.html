@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Read (One)</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script>
+            function confirm_delete(){
+                confirm("Are you sure you wish to delete your account?");
+            }
+        </script>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='jumbotron text-center align-items-center'>
+                <h1>User {{ user_info['user_id'] }}</h1>
+                <p>Full Name: {{ user_info['first_name'] }} {{ user_info['last_name'] }}</p>
+                <p>Email: {{ user_info['email'] }}</p>
+                <p>Created on: {{ user_info['created_at'] | formatdatetime }}</p>
+                <p>Last Updated on: {{ user_info['updated_at'] | formatdatetimeupdate }}</p>
+                <h3><a href="/edit/{{ user_info['user_id'] }}" class='btn btn-warning btn-sm'>Edit</a> | <a onclick="confirm_delete()" href="/delete_user/{{ user_info['user_id'] }}" class='btn btn-danger btn-sm'>Delete</a> | <a class='btn btn-success btn-sm' href='/'>Home</a></h3>
+            </div>
+        </div>
+    </body>
+</html>

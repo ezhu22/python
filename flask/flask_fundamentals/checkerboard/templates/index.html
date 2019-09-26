@@ -1,0 +1,29 @@
+<html>
+    <head>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            {%- for i in range (0, row, 1): -%}
+                <div class="row">
+                {%- for j in range (column): -%}
+                    {%- if i % 2 == 0: -%}
+                        {%- if j % 2 == 0: -%}
+                            <div class="box black"></div>
+                        {%- else: -%}
+                            <div class="box white"></div>
+                        {%- endif -%}
+                    {%- else: -%}
+                        {%- if j % 2 == 0: -%}
+                            <div class="box white"></div>
+                        {%- else: -%}
+                            <div class="box black"></div>
+                        {%- endif -%}
+                    {%- endif -%}
+                {%- endfor -%}
+                </div>
+            {%- endfor -%}
+        </div>
+
+    </body>
+</html>

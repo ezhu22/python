@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ logged_in_user['first_name']}}'s Wall</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+
+        .row{
+            margin-right: auto;
+            margin-left: auto;
+        }
+        </style>
+    </head>
+    <header>
+        <div class='banner container text-center'>
+            <div class='row justify-content-between'>
+                <div class='logo col-6'>
+                    <img style="width: 150px;" class='rounded float-left img-thumbnail' src="{{ url_for('static', filename='logo.png') }}" alt='Coding Dojo logo'>
+                    <h1>Dojo Garden Wall</h1>
+                </div>
+                <div class='hello_goodbye col-6 text-right'>
+                    <h5>Welcome, {{logged_in_user['first_name'] }}</h5>
+                    <a href='/logout'>Log Out!</a>
+                </div>
+            </div>
+            {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <h3 class='alert alert-warning'>{{ message }} </h3>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+        </div>
+        
+    </header>
+    <body>
+        <div class='container row justify-content-between'>
+            <div style='margin-left: 25px; margin-top: 25px;' class='col-4'>
+                <h3 class='text-center'>Message(s) for You</h3>
+                {%for message in all_messages %}
+                    {% if message['post_to_user_id'] == logged_in_user['id'] %}
+                        <div>
+                            <div class='border border-primary' style="padding: 10px 10px; margin: 5px 5px;">
+                                <p><strong>{{ message['first_name'] }}</strong> said on {{ message['created_at'] | formatdatetime }} <a class='float-right' href="/delete/{{ message['id'] }}/{{ logged_in_user['id'] }}"><img src="{{ url_for('static', filename='trashbin.png') }}" style="width: 25px;" alt='Delete post.'></a></p>
+                                <p class='border border-secondary' style="padding: 5px 5px;">{{ message['content'] }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class='col-4' style='margin-right: 25px; margin-top: 25px;'>
+                <h3 class='text-center'>Send Messages</h3>
+                {% for user in other_users %}
+                    {% if not user['id'] == logged_in_user['id'] %}
+                        <form action="/post_message/{{ logged_in_user['id'] }} / {{ user['id'] }}" method='POST'>
+                            <label><strong>{{ user['first_name'] }} {{ user['last_name'] }}</strong></label>
+                            <textarea class='form-control' name='message_box' rows='3'></textarea>
+                            <input style='margin: 10px 10px;' class='btn btn-secondary' type='submit' value='Send'>
+                        </form>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+    
+</html>

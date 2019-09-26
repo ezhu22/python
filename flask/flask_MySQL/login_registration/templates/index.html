@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login and Registration</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <header>
+        <div class='jumbotron text-center'>
+            <h1>Login and Registration</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <h3 class='alert alert-danger'>{{ message }} </h3>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>  
+    </header>
+    <body>
+        <div class='container'>
+            <div class='row'>
+                <div class='col'>
+                    <h3>Register here!</h3>
+                    <form action='/check_requirements' method='post'>
+                    <label>First Name:</label>
+                    <p><input type='text' name='first_name' value="{{ try_fname }}"></p>
+                    <label>Last Name:</label>
+                    <p><input type='text' name='last_name' value=''></p>
+                    <label>Email:</label>
+                    <p><input type='text' name='email' value=''></p>
+                    <label>Password*:</label>
+                    <p><input type='password' name='password' value=''></p>
+                    <label>Confirm Password:</label>
+                    <p><input type='password' name='confirm_password' value=''></p>
+                    <input type='submit' value='Register!'>
+                    </form>
+                    
+                    <p>* Password Requirement: </p>
+                    <ul>
+                        <li>Must contain 1 Uppercase Letter</li>
+                        <li>Must contain 1 Number</li>
+                        <li>Must be within 8-16 characters</li>
+                        <li>Cannot contain space characters</li>
+                    </ul>
+                </div>
+                <div class='col'>
+                    <h3>Login here!</h3>
+                    <form action='/login_user' method='post'>
+                        <label>Email:</label>
+                        <p><input type='text' name='email' value=''></p>
+                        <label>Password:</label>
+                        <p><input type='password' name='password' value=''></p>
+                        <input type='submit' value='Login!'>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

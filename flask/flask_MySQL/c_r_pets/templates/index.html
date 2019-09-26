@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create and Read Pets</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class='jumbotron text-center'>
+            <h1>All the Pets!</h1>
+            <table class='table table-striped text-center align-items-center justify-content-center'>
+                <thead class='thead-dark'>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                {% for one_pet in all_pets %}
+                    <tr>
+                        <th>{{ one_pet['pet_id'] }}</th>
+                        <th>{{ one_pet['name'] }}</th>
+                        <th>{{ one_pet['type'] }}</th>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class='container'>
+            <div class='row align-items-center justify-content-center'>
+                <div class='col-4 align-items-center text-center'>
+                    <h3>Add a Pet</h3>
+                    <form action="create_pet" method='POST'>
+                        <p>Name: <input type='text' name='p_name'></p>
+                        <p>Type: <input type='text' name='p_type'></p>
+                        <input class='btn btn-primary' type='submit' value='Add Pet'>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

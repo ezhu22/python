@@ -1,0 +1,4 @@
+missed a ")" in the query of the prepared statement, resulted in the inputs not being registered to the database.
+
+forgot to add a line that connects the connection to the actual database.
+

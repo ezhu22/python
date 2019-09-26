@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+        form{
+            margin: 25px 100px;
+            padding: 25px 25px;
+        }
+
+        #button{
+            margin: 15px 0px;
+            margin-left: 85%;
+        }
+        </style>
+    </head>
+    <body>
+        <form action='/result' id='dojo_info' method="post">
+            <div class='form-group border border-dark'>
+                    <label>Your Name: </label><input class='form-control' type='text' name='name'>
+                    Dojo Location: <select name='location' class='form-control'>
+                        <option value=""></option>
+                        <option value="Dallas">Dallas</option>
+                        <option value="San Jose">San Jose</option>
+                        <option value="Seattle">Seattle</option>
+                        <option value="Los Angeles">Los Angeles</option>
+                        <option value="Chicago">Chicago</option>
+                        <option value="Tulsa">Tulsa</option>
+                        <option value="Berkeley">Berkeley</option>
+                        <option value="Boises">Boises</option>
+                    </select>
+                    Favorite Language: <select name="language" class='form-control'>
+                            <option value=""></option>
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+                            <option value="C#/.NET">C#/.NET</option>
+                            <option value="MEAN">MEAN</option>
+                            <option value="RUBY">RUBY</option>
+                    </select>
+                    Comment (Optional): <input type='text' class='form-control'name='comment'>
+                    <input class='btn btn-primary btn-lg' id='button' type='submit' value='Button'>
+            </div>
+        </form>
+    </body>
+</html>

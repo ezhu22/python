@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .container{
+            margin: 25px 100px;
+            padding: 25px 25px;
+        }
+
+        #button{
+            margin: 15px 0px;
+            margin-left: 85%;
+        }
+    </style>
+    </head>
+    <body>
+        <div class='container border border-dark'>
+            <h1>Submitted Info</h1>
+            <p>Name: {{ user_data['name'] }}</p>
+            <p>Dojo Location: {{ user_data['location'] }}</p>
+            <p>Favorite Language: {{ user_data['language'] }}</p>
+            <p>Comment: {{ user_data['comment'] }}</p>
+            <form action='/' method='post'>
+            <input type='submit' id='button' class='btn btn-primary' value='Go Back'>
+            </form>
+        </div>
+    </body>
+</html>

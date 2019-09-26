@@ -1,0 +1,33 @@
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+h1{
+    text-align: center;
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    display: inline-block;
+    margin: 25px 25px;
+}
+</style>
+
+<h1>Welcome</h1>
+<p>Color: {{color}}</p>
+<p>Boxes are repeated: {{num}} times.</p>
+
+
+
+<div class = 'container'>
+    <div class='box' style="background-color: {{color}};"></div>
+    <div class='box' style="background-color: {{color}};"></div>
+    <div class='box' style="background-color: {{color}};"></div>
+    {% for x in range (3, num): %}
+    <div class='box' style="background-color: {{color}};"></div>
+    {% endfor %}
+</div>

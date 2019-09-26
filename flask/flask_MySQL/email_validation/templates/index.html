@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Email Validation</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="jumbotron text-center align-items-center">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <h3 class='alert alert-danger'>{{ message }} </h3>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <h1>Please enter your E-Mail Address!</h1>
+            <form class='align-items-center' action='/enter_email' method='post'>
+                <p>Email Address: <input class='form-group' type='text' name='email' value='ninja@dojo.com'></p>
+                <input type='submit' class='btn btn-primary btn-sm'value='Sign your life away'>
+            </form>
+        </div>
+
+    </body>
+</html>

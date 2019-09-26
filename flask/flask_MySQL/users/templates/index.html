@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Read (All)</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script>
+        function confirm_delete(){
+            confirm("Are you sure you wish to delete your account?");
+        }
+        </script>
+    </head>
+    <body>
+        <div class='jumbotron align-items-center text-center'>
+            <h1>All Users</h1>
+            <table class='table text-center table-striped'>
+                <thead class='thead-dark'>
+                    <tr>
+                        <th class="align-middle">ID</th>
+                        <th class="align-middle">Full Name</th>
+                        <th class="align-middle">Email</th>
+                        <th class="align-middle">Created At</th>
+                        <th class="align-middle">Actions</th>
+                    </tr>
+                </thead>
+                    {% for one_user in all_users %}
+                    <tr> 
+                        <th class="align-middle">{{ one_user['user_id'] }}</th>
+                        <th class="align-middle">{{ one_user['first_name'] }} {{ one_user['last_name'] }}</th>
+                        <th class="align-middle">{{ one_user['email'] }}</th>
+                        <th class="align-middle">{{ one_user['created_at'] | formatdatetime }}</th>
+                        <th class="align-middle"><h3><a href="/show/{{ one_user['user_id'] }}" class='btn btn-info btn-sm'>Show</a> | <a href="/edit/{{ one_user['user_id'] }}" class='btn btn-warning btn-sm'>Edit</a> | <a onclick="confirm_delete()" href="/delete_user/{{ one_user['user_id'] }}" class='btn btn-danger btn-sm'>Delete</a></h3></th>
+                    </tr>
+                    {% endfor %}
+            </table>
+            <a href="/add_user" class='btn btn-primary'>Add a New User</a>
+        </div>
+    </body>
+</html>

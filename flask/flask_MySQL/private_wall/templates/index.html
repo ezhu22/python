@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dojo Garden Wall</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='wall.js') }}"></script>
+    </head>
+    <header>
+        <div class='jumbotron text-center'>
+            <h1>Dojo Garden Wall</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <h3 class='alert alert-danger'>{{ message }} </h3>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>  
+    </header>
+    <body>
+        <div class='container'>
+            <div class='row'>
+                <div class='col justify-content-between text-center'>
+                    <h3>Register here!</h3>
+                    <form action='/check_requirements' id='check_requirements' method='post'>
+                    <label>First Name:</label>
+                    <p><input type='text' name='first_name' value="{{ try_fname }}"></p>
+                    <label>Last Name:</label>
+                    <p><input type='text' name='last_name' value=''></p>
+                    <label>Email:</label>
+                    <div id="email_msg"></div>
+                    <p><input type='text' name='email' id='email' ></p>
+                    <label>Password*:</label>
+                    <p><input type='password' name='password' value=''></p>
+                    <label>Confirm Password:</label>
+                    <p><input type='password' name='confirm_password' value=''></p>
+                    <input type='submit' value='Register!'>
+                    </form>
+                    
+                    <p style="line-height: 0; margin-top: 50px;" class='text-left'>* Password Requirement: </p>
+                    <ul style='list-style-position: inside;' class='text-left'>
+                        <li>Must contain 1 Uppercase Letter</li>
+                        <li>Must contain 1 Number</li>
+                        <li>Must be within 8-16 characters</li>
+                        <li>Cannot contain space characters</li>
+                    </ul>
+                </div>
+                <div class='col justify-content-between text-center'>
+                    <div> 
+                        <h3>Login here!</h3>
+                        <form action='/login_user' method='post'>
+                            <label>Email:</label>
+                            <p><input type='text' name='email' value=''></p>
+                            <label>Password:</label>
+                            <p><input type='password' name='password' value=''></p>
+                            <input type='submit' value='Login!'>
+                        </form>
+                    </div>
+                    <div style='margin-top: 50px;' class="justify-content-between text-center">
+                        <h5>Check to see if your friends are here already!</h5>
+                        <h6>Enter their email here!</h6>
+                        <form method="POST" action="/usersearch" id='usersearch'> 
+                            <input type="text" id='search_email' name="search_email">
+                            <div id="search_friend_msg"></div>
+                            <input type='submit' id='btn_search_friend' value='Submit'>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

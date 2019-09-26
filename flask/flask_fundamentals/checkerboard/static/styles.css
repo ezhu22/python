@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+.container{
+    margin: 20px 20px;
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+    display: inline-block;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    display:inline-block;
+    border-collapse: collapse;
+}
+
+.white{
+    background-color: white;
+}
+
+.black{
+    background-color: black;
+}

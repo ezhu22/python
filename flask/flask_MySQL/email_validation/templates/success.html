@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Success!</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class='jumbotron text-center align-items-center'>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <h3 class='alert alert-success'>{{ message }} </h3>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <table class='table text-center align-items-center'>
+                <thead>
+                    <tr>
+                        <th><u>Email Addresses Entered</u></th>
+                        <th>Date Created</th>
+                    </tr>
+                </thead>
+                {% for one_email in all_emails %}
+                    <tr>
+                        <th>{{ one_email['email'] }}</th>
+                        <th>{{ one_email['created_at'] | formatdatetime }}</th>
+                    </tr>
+                {% endfor %}
+            </table>
+            <a class='btn btn-primary' href='/'>Add another email address</a>
+        </div>
+    </body>
+</html>
